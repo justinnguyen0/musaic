@@ -1,22 +1,22 @@
 import React, {Component} from "react"
+import "./Register.css";
 
 class Register extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            username:"",
+            emailaddress:"",
             password:"",
             confirmPassword:"",
-            gender: "",
         }
 
         this.handleSubmit = this.handleSubmit.bind(true)
     }
 
-    usernameHandler = (event) => {
+    emailaddressHandler = (event) => {
         this.setState({
-            username: event.target.value
+            emailaddress: event.target.value
         })
     }
 
@@ -32,20 +32,13 @@ class Register extends Component {
         })
     }
 
-    genderHandler = (event) => {
-        this.setState({
-            gender: event.target.value
-        })
-    }
-
     handleSubmit = (event) => {
         alert(`${this.state.username} Registered Successfully`)
         console.log(this.state)
         this.setState({
-            username:"",
+            emailaddress:"",
             password:"",
             confirmPassword:"",
-            gender:"",
 
         })
     event.preventDefault()
@@ -55,19 +48,23 @@ class Register extends Component {
 
 render() {
     return (
+        
             <div>
+                <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'></link>
                 <form onSubmit={this.handleSubmit}>
-                    <h1>User Registration</h1>
-                    <label>Username :</label> <input type="text" value={this.state.username} onChange={this.usernameHandler} placeholder="Username..." /><br />
-                    <label>Password :</label> <input type="password" value={this.state.password} onChange={this.passwordHandler} placeholder="Password..." /><br />
-                    <label>Confirm Password :</label> <input type="password" value={this.state.confirmPassword} onChange={this.confirmPasswordHandler} placeholder="Confirm Password..." /><br />
-                    <label>Gender :</label><select onChange={this.genderHandler} defaultValue="Select Your Gender">
-                        <option defaultValue>Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="nonbinary">Non-binary</option>
-                    </select><br />
-                    <input type="submit" value="Submit" />
+                    <h1 className="musaic"><b>MUSAIC</b></h1>
+                    <label className="registerEmail">Email Address :</label><br /> <input className="registerInput" type="text" value={this.state.emailaddress} onChange={this.emailaddressHandler} placeholder="Email Address" /><br /><br />
+                    <label className="registerPassword">Password :</label><br /> <input className="registerInput" type="password" value={this.state.password} onChange={this.passwordHandler} placeholder="Password" /><br /><br />
+                    
+                    <label className="registerConfirmPassword">Confirm Password :</label><br /> <input className="registerInput" type="password" value={this.state.confirmPassword} onChange={this.confirmPasswordHandler} placeholder="Confirm Password" /><br />
+                    
+                    <br /><a href="http://localhost:3000/login">Forgot your password?</a><br />
+                    <br></br>
+                    
+                    <button className ="loginButton" type="button">Log in</button> <br />
+                    <hr className ="line"></hr>
+                    <label className = "noAccountText">Don't have an account?</label><br />
+                    <button className = "signUpButton" type = "button">Sign up</button><br /> 
                 </form>
             </div>
         )
