@@ -17,7 +17,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <div>
           <NavBar />
           <Switch>
             <Route exact path="/">
@@ -39,7 +38,6 @@ function App() {
               <Login />
             </Route>
           </Switch>
-        </div>
       </BrowserRouter>
     </div>
   );
