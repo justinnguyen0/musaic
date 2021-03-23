@@ -54,6 +54,11 @@ render() {
                     <label>Password :</label> <input type="password" value={this.state.password} onChange={this.passwordHandler} placeholder="Password..." /><br />
                     <input type="submit" value="Submit" />
                 </form>
+                <div className="App">
+                    <a href="http://localhost:8888">
+                        <button>Login with Spotify</button>
+                    </a>
+                </div>
             </div>
         )
     }
