@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login/Login';
 import NavBar from './components/NavBar/NavBar';
-import Home from './components/Home/Home';
+import Feed from './components/Feed/Feed';
 import Friends from './components/Friends/Friends';
 import Chat from './components/Chat/Chat';
 import Profile from './components/Profile/Profile';
@@ -20,7 +20,7 @@ function App() {
           <NavBar />
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Feed />
             </Route>
             <Route exact path="/chat">
               <Chat />

@@ -17,13 +17,13 @@ export default function NavBar() {
         <>
             <Nav>
                 <NavbarContainer>
-                    <NavLogo to="/home">Musaic</NavLogo>
+                    <NavLogo to="/feed">Musaic</NavLogo>
                     <MobileIcon>
                         <FaBars />
                     </MobileIcon>
                     <NavMenu>
                         <NavItem>
-                            <NavLinks to="/home">Home</NavLinks>
+                            <NavLinks to="/feed">Feed</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="/chat">Chat</NavLinks>
