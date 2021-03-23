@@ -1,74 +1,160 @@
-import React, {Component} from "react"
-import "./Register.css";
+import React, { useState } from 'react';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
-class Register extends Component {
-    constructor(props) {
-        super(props)
+const GlobalStyle = createGlobalStyle`
+  html {
+    height: 100%
+  }
+  body {
+    font-family: Encode Sans Expanded;
+    background: #fcf2d1;;
+    height: 100%;
+    margin: 0;
+    color: #555;
+  }
+`;
 
-        this.state = {
-            emailaddress:"",
-            password:"",
-            confirmPassword:"",
+const sharedStyles = css`
+    background-color: #eee;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin: 10px 0 20px 0;
+    padding: 20px;
+    box-sizing: border-box;
+`;
+
+const StyledFormWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+`;
+
+const StyledForm = styled.form`
+    width: 100%;
+    max-width: 700px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+`;
+
+const StyledInput = styled.input`
+    font-size: 0.9rem;
+    display: block;
+    width: 100%;
+    ${sharedStyles}
+`;
+
+const StyledButton = styled.button`
+    display: block;
+    background-color: #f7797d;
+    color: #fff;
+    font-size: 0.9rem;
+    border: 0;
+    border-radius: 10px;
+    height: 40px;
+    padding: 0 20px;
+    cursor: pointer;
+    box-sizing: border-box;
+`;
+
+const StyledError = styled.div`
+    color: red;
+    font-weight: 800;
+    margin: 0 0 40px 0;
+`;
+
+const initalState = {
+    email: '',
+    password: '',
+    confirmpassword: '',
+};
+
+function Register() {
+    const [state, setState] = useState(initalState);
+    const [error, setError] = useState('');
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log('Account created');
+        console.log(state);
+
+        for (let key in state) {
+            if (key === 'email' && state[key] === '') {
+                setError(`Please enter your email`)
+                return
+            }
+            else if (key === 'password' && state[key] === '') {
+                setError(`Please enter a password`)
+                return
+            }
+            else if (key === 'confirmpassword' && state[key] === '') {
+                setError("Please confirm your password")
+                return
+            }
+        }
+        if (state['confirmpassword'] != state['password']) {
+            setError("Passwords do not match")
+            return
         }
 
-        this.handleSubmit = this.handleSubmit.bind(true)
-    }
+        setError('');
+        console.log("Success")
+    };
 
-    emailaddressHandler = (event) => {
-        this.setState({
-            emailaddress: event.target.value
-        })
-    }
+    const handleInput = e => {
+        const inputName = e.currentTarget.name;
+        const value = e.currentTarget.value;
 
-    passwordHandler = (event) => {
-        this.setState({
-            password: event.target.value
-        })
-    }
+        setState(prev => ({ ...prev, [inputName]: value }));
+  };
 
-    confirmPasswordHandler = (event) => {
-        this.setState({
-            confirmPassword: event.target.value
-        })
-    }
+  return (
+    <>
+        <GlobalStyle />
+        <StyledFormWrapper>
+            <StyledForm onSubmit={handleSubmit}>
+                <h2>Register an account</h2>
 
-    handleSubmit = (event) => {
-        alert(`${this.state.username} Registered Successfully`)
-        console.log(this.state)
-        this.setState({
-            emailaddress:"",
-            password:"",
-            confirmPassword:"",
+                <label htmlFor="email">Email</label>
+                <StyledInput
+                    type="email"
+                    name="email"
+                    value={state.email}
+                    onChange={handleInput}
+                />
 
-        })
-    event.preventDefault()
-    }
+                <label htmlFor="password">Password</label>
+                <StyledInput
+                    type="password"
+                    name="password"
+                    value={state.password}
+                    onChange={handleInput}
+                />
 
-
-
-render() {
-    return (
-        
-            <div>
-                <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'></link>
-                <form onSubmit={this.handleSubmit}>
-                    <h1 className="musaic"><b>MUSAIC</b></h1>
-                    <label className="registerEmail">Email Address :</label><br /> <input className="registerInput" type="text" value={this.state.emailaddress} onChange={this.emailaddressHandler} placeholder="Email Address" /><br /><br />
-                    <label className="registerPassword">Password :</label><br /> <input className="registerInput" type="password" value={this.state.password} onChange={this.passwordHandler} placeholder="Password" /><br /><br />
-                    
-                    <label className="registerConfirmPassword">Confirm Password :</label><br /> <input className="registerInput" type="password" value={this.state.confirmPassword} onChange={this.confirmPasswordHandler} placeholder="Confirm Password" /><br />
-                    
-                    <br /><a href="http://localhost:3000/login">Forgot your password?</a><br />
-                    <br></br>
-                    
-                    <button className ="loginButton" type="button">Log in</button> <br />
-                    <hr className ="line"></hr>
-                    <label className = "noAccountText">Don't have an account?</label><br />
-                    <button className = "signUpButton" type = "button">Sign up</button><br /> 
-                </form>
-            </div>
-        )
-    }
+                <label htmlFor="confirmpassword">Confirm Password</label>
+                <StyledInput
+                    type="confirmpassword"
+                    name="confirmpassword"
+                    value={state.confirmpassword}
+                    onChange={handleInput}
+                />
+                
+                {error && (
+                    <StyledError>
+                    <p>{error}</p>
+                    </StyledError>
+                )}
+                
+                <StyledButton type="submit">Connect Spotify</StyledButton>
+                </StyledForm>
+        </StyledFormWrapper>
+    </>
+  );
 }
 
-export default Register;
+export default Register
