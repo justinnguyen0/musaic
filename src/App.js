@@ -15,29 +15,31 @@ import Register from './components/Register/Register';
 function App() {
 
   return (
-    <BrowserRouter>
-        <NavBar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/chat">
-            <Chat />
-          </Route>
-          <Route exact path="/friends">
-            <Friends />
-          </Route>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
-          <Route exact path="/register">
-            <Register />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-        </Switch>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+          <NavBar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/chat">
+              <Chat />
+            </Route>
+            <Route exact path="/friends">
+              <Friends />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+          </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 

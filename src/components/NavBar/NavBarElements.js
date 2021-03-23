@@ -3,8 +3,9 @@ import { Link as LinkR } from 'react-router-dom';
 import { Link as LinkS } from 'react-scroll';
 
 export const Nav = styled.nav`
-    background: #000;
+    background: #fcf2d1;
     height: 80px;
+    width: 100%;
     /*margin-top: -80px;*/
     display: flex;
     justify-content: center;
@@ -30,7 +31,7 @@ export const NavbarContainer = styled.div`
 `;
 
 export const NavLogo = styled(LinkR)`
-    color: #fff;
+    color: #000;
     justify-self: flex-start;
     cursor: pointer;
     font-size: 1.5rem;
@@ -73,7 +74,7 @@ export const NavItem = styled.li`
 `;
 
 export const NavLinks = styled(LinkR)`
-    color: #fff;
+    color: #000;
     display: flex;
     align-items: center;
     text-decoration: none;
