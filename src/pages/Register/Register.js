@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: Encode Sans Expanded;
-    background: #fcf2d1;;
+    background: #181b64;
     height: 100%;
     margin: 0;
     color: #555;
