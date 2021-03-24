@@ -1,47 +1,35 @@
 import React from 'react';
-import {FaBars} from 'react-icons/fa';
+import { AiOutlineHome, AiOutlinePlusCircle } from 'react-icons/ai';
+import { FiUser, FiUsers } from 'react-icons/fi';
+import { BsChatDots } from 'react-icons/bs'; 
 import {
     Nav, 
-    NavbarContainer, 
-    NavLogo, 
-    MobileIcon, 
     NavMenu, 
-    NavItem, 
-    NavLinks,
-    NavBtn,
-    NavBtnLink
+    NavLink,
 } from './NavBarElements';
 
 export default function NavBar() {
     return (
         <>
             <Nav>
-                <NavbarContainer>
-                    <NavLogo to="/feed">Musaic</NavLogo>
-                    <MobileIcon>
-                        <FaBars />
-                    </MobileIcon>
-                    <NavMenu>
-                        <NavItem>
-                            <NavLinks to="/feed">Feed</NavLinks>
-                        </NavItem>
-                        <NavItem>
-                            <NavLinks to="/chat">Chat</NavLinks>
-                        </NavItem>
-                        <NavItem>
-                            <NavLinks to="/friends">Friends</NavLinks>
-                        </NavItem>
-                        <NavItem>
-                            <NavLinks to="/profile">Profile</NavLinks>
-                        </NavItem>
-                        <NavItem>
-                            <NavLinks to="/register">Register</NavLinks>
-                        </NavItem>
-                    </NavMenu>
-                    <NavBtn>
-                        <NavBtnLink to="/login">Login</NavBtnLink>
-                    </NavBtn>
-                </NavbarContainer>
+                <NavLink to="/">
+                    Musaic
+                    {/* <img src={require('../../images/logo.svg')} alt='logo'/> */}
+                </NavLink>
+                <NavMenu>
+                    <NavLink to="/home" activeStyle={{color: '#ab936b'}}>
+                        <AiOutlineHome />
+                    </NavLink>
+                    <NavLink to="/chat" activeStyle={{color: '#ab936b'}}>
+                        <BsChatDots />
+                    </NavLink>
+                    <NavLink to="/friends" activeStyle={{color: '#ab936b'}}>
+                        <FiUsers />
+                    </NavLink>
+                    <NavLink to="/profile" activeStyle={{color: '#ab936b'}}>
+                        <FiUser />
+                    </NavLink>
+                </NavMenu>
             </Nav>
         </>
     );

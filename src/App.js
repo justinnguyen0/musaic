@@ -2,44 +2,32 @@ import React from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import logo from './images/logo.svg';
 import './App.css';
-import Login from './components/Login/Login';
+import Login from './pages/Login/Login';
 import NavBar from './components/NavBar/NavBar';
-import Feed from './components/Feed/Feed';
-import Friends from './components/Friends/Friends';
-import Chat from './components/Chat/Chat';
-import Profile from './components/Profile/Profile';
-import Register from './components/Register/Register';
+import Home from './pages/Home/Home';
+import Friends from './pages/Friends/Friends';
+import Chat from './pages/Chat/Chat';
+import Profile from './pages/Profile/Profile';
+import Register from './pages/Register/Register';
 
-
+//todo: landing page
 
 function App() {
 
   return (
-    <div className="App">
-      <BrowserRouter>
-          <NavBar />
-          <Switch>
-            <Route exact path="/">
-              <Feed />
-            </Route>
-            <Route exact path="/chat">
-              <Chat />
-            </Route>
-            <Route exact path="/friends">
-              <Friends />
-            </Route>
-            <Route exact path="/profile">
-              <Profile />
-            </Route>
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-          </Switch>
-      </BrowserRouter>
-    </div>
+    
+    <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/chat" component={Chat} />
+          <Route exact path="/friends" component={Friends} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+        </Switch>
+    </BrowserRouter>
+   
   );
 }
 
