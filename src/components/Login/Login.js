@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import { loginURL } from "../../spotify"
 
 class Login extends Component {
     constructor(props) {
@@ -54,11 +55,11 @@ render() {
                     <label>Password :</label> <input type="password" value={this.state.password} onChange={this.passwordHandler} placeholder="Password..." /><br />
                     <input type="submit" value="Submit" />
                 </form>
-                <div className="App">
-                    <a href="http://localhost:8888">
-                        <button>Login with Spotify</button>
-                    </a>
-                </div>
+                
+                <a href={loginURL}>
+                    <button>Login with Spotify</button>
+                </a>
+                
             </div>
         )
     }
