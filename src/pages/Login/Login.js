@@ -125,8 +125,8 @@ function Login() {
                 )}
                 
                 <StyledButton onClick={handleSubmit} type="submit">Login</StyledButton>
+                <a href={loginURL} style={{textDecoration: 'none'}}><StyledButton type="button">Login with Spotify</StyledButton></a>
             </StyledForm>
-            <a href={loginURL}><StyledButton>Login with Spotify</StyledButton></a>
         </StyledFormWrapper>
     </>
   );
