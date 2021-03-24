@@ -42,27 +42,15 @@ function App() {
     <div className="App">
       {token ? (
       <BrowserRouter>
-          <NavBar />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/chat">
-              <Chat />
-            </Route>
-            <Route exact path="/friends">
-              <Friends />
-            </Route>
-            <Route exact path="/profile">
-              <Profile />
-            </Route>
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-          </Switch>
+      <NavBar />
+      <Switch>
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/chat" component={Chat} />
+        <Route exact path="/friends" component={Friends} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
+      </Switch>
       </BrowserRouter>
       ) :
       (<Login />)}
