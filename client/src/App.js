@@ -49,9 +49,8 @@ function App() {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          {token ? (<Route component={Home} />) : (<Route component={Login} />)}
         </Switch>
-
-        {token ? (<Route component={Home} />) : (<Route component={Login} />)}
         
       </BrowserRouter>
     </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
-import axios from 'axios';
-import DataService from '../services/data.service.js';
+import UserService from '../../services/user.service.js';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -111,7 +110,7 @@ function Register() {
             password: state.password
           };    
 
-        const res = DataService.registerNewUser(studentObject);
+        const res = UserService.registerNewUser(studentObject);
         console.log(res);
           /******************************************************************************************************** */
       

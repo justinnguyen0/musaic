@@ -1,6 +1,6 @@
-import http from "../../http-common";
+import http from "../http-common.js";
 
-class DataService {
+class UserService {
 
   findPassByEmail(userEmail) {
     //return http.get(`/users/${userEmail}`);
@@ -20,6 +20,5 @@ class DataService {
     return http.post('/users/fetchByID/:id',id);
   }
 
-}
-
-export default new DataService();
+} 
+export default new UserService();

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
-import { loginURL } from '../../spotify';
-import axios from 'axios';
-import DataService from '../services/data.service.js';
+import UserService from '../../services/user.service.js';
+import  { loginURL }  from '../../spotify';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -89,14 +88,14 @@ function Login() {
         /*const res = DataService.findPassByEmail(state.email);
         console.log(res);*/
         
-
+        
         //Gets user data from id 
         const idObj = {
             id: '605aae5068694537687f1a12'
 
         };
 
-        const res1 = DataService.findUserByID(idObj);
+        const res1 = UserService.findUserByID(idObj);
         console.log(res1); 
 
       
