@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
+import { loginURL } from '../../spotify';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -124,7 +125,8 @@ function Login() {
                 )}
                 
                 <StyledButton onClick={handleSubmit} type="submit">Login</StyledButton>
-                </StyledForm>
+            </StyledForm>
+            <a href={loginURL}><StyledButton>Login with Spotify</StyledButton></a>
         </StyledFormWrapper>
     </>
   );
