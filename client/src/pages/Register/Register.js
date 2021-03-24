@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
+import UserService from '../../services/user.service.js';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -101,7 +102,19 @@ function Register() {
             setError("Passwords do not match")
             return
         }
+      
+      
+        //Creates new user and sends html request to server - server then adds new user to mongoDB Atlas
+        const studentObject = {
+            email: state.email,
+            password: state.password
+          };    
 
+        const res = UserService.registerNewUser(studentObject);
+        console.log(res);
+          /******************************************************************************************************** */
+      
+      
         setError('');
         console.log("Success")
     };
