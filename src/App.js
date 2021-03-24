@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Login from './components/Login/Login';
+import Login from './pages/Login/Login';
 import NavBar from './components/NavBar/NavBar';
-import Home from './components/Home/Home';
-import Friends from './components/Friends/Friends';
-import Chat from './components/Chat/Chat';
-import Profile from './components/Profile/Profile';
-import Register from './components/Register/Register';
+import Home from './pages/Home/Home';
+import Friends from './pages/Friends/Friends';
+import Chat from './pages/Chat/Chat';
+import Profile from './pages/Profile/Profile';
+import Register from './pages/Register/Register';
 import SpotifyWebApi from "spotify-web-api-js"
 import { getTokenFromURL } from './spotify';
 
 const spotify = new SpotifyWebApi();
+
+//todo: landing page
 
 function App() {
 
@@ -37,9 +39,6 @@ function App() {
   }, []);
 
   return (
-    /*<div>
-            {token ? (<h2><Profile /></h2>) : (<Login />)}
-        </div>);*/
     <div className="App">
       {token ? (
       <BrowserRouter>
