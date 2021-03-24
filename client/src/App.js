@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import './App.css';
+import LandingPage from './pages/LandingPage/LandingPage';
 import Login from './pages/Login/Login';
 import NavBar from './components/NavBar/NavBar';
 import Home from './pages/Home/Home';
 import Friends from './pages/Friends/Friends';
 import Chat from './pages/Chat/Chat';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
 import Profile from './pages/Profile/Profile';
 import Register from './pages/Register/Register';
 import SpotifyWebApi from "spotify-web-api-js"
@@ -43,15 +45,16 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Switch>
+          <Route exact path="/" component={LandingPage}/>
           <Route exact path="/home" component={Home} />
           <Route exact path="/chat" component={Chat} />
           <Route exact path="/friends" component={Friends} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/resetpassword" component={ResetPassword} />
+          {token ? (<Route component={Home} />) : (<Route component={Login} />)}
         </Switch>
-
-        {token ? (<Route component={Home} />) : (<Route component={Login} />)}
         
       </BrowserRouter>
     </div>
@@ -61,3 +64,4 @@ function App() {
 
 
 export default App;
+
