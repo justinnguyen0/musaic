@@ -1,16 +1,20 @@
-let express = require('express');
-let mongoose = require('mongoose');
-let cors = require('cors');
-let bodyParser = require('body-parser');
-let dbConfig = require('./database/db');
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const dotenv = require('dotenv')
+const cors = require('cors');
+const bodyParser = require('body-parser');
+//const dbConfig = require('./database/db');
 const createError = require('http-errors');
+
+dotenv.config()
 
 // Express Route
 const userRoute = require('./routes/user.routes')
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db, {
+mongoose.connect(process.env.DATABASE_ACCESS, {
   useNewUrlParser: true, useUnifiedTopology: true 
 }).then(() => {
   console.log('Database sucessfully connected!')
@@ -20,7 +24,6 @@ mongoose.connect(dbConfig.db, {
   }
 )
 
-const app = express();
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true

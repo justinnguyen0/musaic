@@ -20,13 +20,24 @@ const Schema = mongoose.Schema;
 
 module.exports = mongoose.model('User', userSchema)*/
 
-let userSchema = new Schema({
+const userSchema = new Schema({
     email: {
       type: String,
-      unique: true
+      unique: true,
+      required: true
+    },
+    username: {
+      type: String,
+      unique: true,
+      required: true
     },
     password: {
-      type: String
+      type: String,
+      required: true
+    },
+    date: {
+      type: Date,
+      default: Date.now
     }
   }, {
       collection: 'users'
