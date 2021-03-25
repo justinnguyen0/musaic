@@ -92,7 +92,7 @@ function ResetPassword() {
                 return
             }
         }
-        if (state['confirmpassword'] != state['password']) {
+        if (state['confirmpassword'] !== state['password']) {
             setError("Passwords do not match")
             return
         }
