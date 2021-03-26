@@ -75,6 +75,8 @@ const initalState = {
     password: '',
 };
 
+var correctLogin;
+
 function Login() {
     const [state, setState] = useState(initalState);
     const [error, setError] = useState('');
@@ -83,15 +85,27 @@ function Login() {
         e.preventDefault();
       
       
-        const res = UserService.findPassByEmail(state.email);
-        console.log(res);
+        const res = UserService.findPassByEmail(state.email).then(function(result){
+            console.log(result.data._id);
+            if(result.data.password == state.password)
+            {
+                correctLogin = true;
+            }else{
+                correctLogin = false;
+            }
+
+            
+            console.log(correctLogin);
 
       
-        //validate email and password
-        //redirect to homepages
-        setError('');
+            //validate email and password
+            //redirect to homepages
+            setError('');
+    
+            console.log("Success")
 
-        console.log("Success")
+        });
+
     };
 
     const handleInput = e => {
