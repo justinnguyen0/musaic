@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
@@ -10,15 +10,15 @@ import Chat from './pages/Chat/Chat';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
 import Profile from './pages/Profile/Profile';
 import Register from './pages/Register/Register';
-import SpotifyWebApi from "spotify-web-api-js"
-import { getTokenFromURL } from './spotify';
+//import SpotifyWebApi from "spotify-web-api-js"
+//import { getTokenFromURL } from './spotify';
 
-const spotify = new SpotifyWebApi();
+//const spotify = new SpotifyWebApi();
 
 //todo: landing page
 
 function App() {
-
+/*
   const [token, setToken] = useState(null);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function App() {
 
     console.log('TOKEN >>> ', _token);
   }, []);
-
+*/
   return (
     <div className="App">
       <BrowserRouter>
@@ -54,7 +54,7 @@ function App() {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/resetpassword" component={ResetPassword} />
-            {token ? (<Route component={Home} />) : (<Route component={Login} />)}
+            {/*token ? (<Route component={Home} />) : (<Route component={Login} />)*/}
           </div>
         </Switch>
         

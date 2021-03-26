@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import UserService from '../../services/user.service.js';
-import  { loginURL }  from '../../spotify';
+//import  { loginURL }  from '../../spotify';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -145,7 +145,7 @@ function Login() {
                 )}
                 
                 <StyledButton onClick={handleSubmit} type="submit">Login</StyledButton>
-                <a href={loginURL} style={{textDecoration: 'none'}}><StyledButton type="button">Login with Spotify</StyledButton></a>
+                {/*<a href={loginURL} style={{textDecoration: 'none'}}><StyledButton type="button">Login with Spotify</StyledButton></a>*/}
             </StyledForm>
         </StyledFormWrapper>
     </>

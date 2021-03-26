@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import UserService from '../../services/user.service.js';
+import  { loginURL }  from '../../spotify';
+import SpotifyWebApi from "spotify-web-api-js"
+import { getTokenFromURL } from '../../spotify';
+const spotify = new SpotifyWebApi();
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -69,14 +73,36 @@ const StyledError = styled.div`
     margin: 0 0 40px 0;
 `;
 
-const initalState = {
+const initialState = {
     email: '',
     password: '',
     confirmpassword: '',
 };
 
 function Register() {
-    const [state, setState] = useState(initalState);
+
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        const tokenHash = getTokenFromURL();
+        window.location.hash = "";
+
+        const _token = tokenHash.access_token;
+
+        if (_token) {
+        setToken(_token);
+
+        spotify.setAccessToken(_token);
+
+        spotify.getMe().then((user) => {
+            console.log('USER >>>', user)
+        })
+    }
+
+    console.log('TOKEN >>> ', _token);
+  }, []);
+
+    const [state, setState] = useState(initialState);
     const [error, setError] = useState('');
 
     const handleSubmit = e => {
@@ -163,7 +189,7 @@ function Register() {
                     </StyledError>
                 )}
                 
-                <StyledButton type="submit">Connect Spotify</StyledButton>
+                <a href={loginURL} style={{textDecoration: 'none'}}><StyledButton type="button">Connect Spotify</StyledButton></a>
                 </StyledForm>
         </StyledFormWrapper>
     </>
