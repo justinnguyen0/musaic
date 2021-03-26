@@ -7,17 +7,22 @@ const { request, response } = require('express');
 const userSchema = require('../models/user');
 
 // CREATE user
+router.post('/create-user', async (req, res, next) => {
+  try {
+      let u = await userSchema.create(req.body);
 
-router.route('/create-user').post((req, res, next) => {
-  userSchema.create(req.body, (error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      console.log(data)
-      res.json(data)
-    }
-  })
+      if (u) {
+          // user exists
+          res.json(u);
+      } else {
+          // user does not exist, handle case
+          console.log(`There is no user that exists with the id of ${req.params.id}`)
+      }
+  } catch (e) {
+      console.log(`There is an error: ${e.message}`);
+  }
 });
+
 
 // READ Students
 router.route('/').get((req, res) => {
@@ -31,8 +36,6 @@ router.route('/').get((req, res) => {
 })
 
 // Get Single user
-
-
 router.get('/fetchByID/:id', async (req, res) => {
     try {
         let u = await userSchema.findById(req.params.id);
@@ -50,17 +53,21 @@ router.get('/fetchByID/:id', async (req, res) => {
 });
 
 
-// Get single user by email
-router.route('/fetchUserName').get((req, res) => {
-    userSchema.findOne(req.query, (error, data) => {
-      if (error) {
-        return next(error)
+router.get('/fetchUserName', async (req, res, next) => {
+  try {
+      let u = await userSchema.findOne(req.query);
+
+      if (u) {
+          // user exists
+          res.json(u);
       } else {
-        res.json(data)
-        console.log(req.query);
+          // user does not exist, handle case
+          console.log(`There is no user that exists with the id of ${req.params.id}`)
       }
-    })
-  })
+  } catch (e) {
+      console.log(`There is an error: ${e.message}`);
+  }
+});
 
 // Update user
 router.route('/update-user/:id').put((req, res, next) => {

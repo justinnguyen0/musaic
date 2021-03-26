@@ -83,27 +83,14 @@ function Login() {
         e.preventDefault();
       
       
-      //Returns user data in JSON based off of email- use this for login authentication 
-        /****************************************************************************** */
-        /*const res = DataService.findPassByEmail(state.email);
-        console.log(res);*/
-        
-        
-        //Gets user data from id 
-        const idObj = {
-            id: '605aae5068694537687f1a12'
+        const res = UserService.findPassByEmail(state.email);
+        console.log(res);
 
-        };
-
-        const res1 = UserService.findUserByID(idObj);
-        console.log(res1); 
-
-      
       
         //validate email and password
         //redirect to homepages
         setError('');
-        alert('Testing: see comments in handlesubmit')
+
         console.log("Success")
     };
 
