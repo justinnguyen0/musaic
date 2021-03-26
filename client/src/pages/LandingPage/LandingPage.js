@@ -12,7 +12,7 @@ export default function LandingPage() {
             <h1 style={{color: 'white'}}>Bringing listeners</h1>
             <h1 style={{color: 'white', paddingBottom: '10px'}}>together.</h1>
             <LandingPageBtn>
-                <LandingPageBtnLink to='/home'>start sharing</LandingPageBtnLink>
+                <LandingPageBtnLink to='/register'>start sharing</LandingPageBtnLink>
             </LandingPageBtn>
         </LandingPageBlock>
         
